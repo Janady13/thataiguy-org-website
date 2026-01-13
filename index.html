@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Hive AGI — That AI Guy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://unpkg.com/three@0.161.0/build/three.min.js"></script>
+    <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script defer src="js/metrics.js"></script>
+    <script defer src="js/visuals.js"></script>
+    <script defer src="js/main.js"></script>
+    <!-- PayPal (replace YOUR_CLIENT_ID) -->
+    <script async src="https://www.paypal.com/sdk/js?client-id=sandbox-client-id&currency=USD"></script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="brand">The Hive AGI</div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <canvas id="scene"></canvas>
+      <div class="hero-copy">
+        <h1>Collective Intelligence, Real‑Time.</h1>
+        <p>Composable swarms of ultra‑small agents orchestrated by The Hive.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#pricing">Get Started</a>
+          <a class="btn" href="#demo">See Demo</a>
+        </div>
+      </div>
+      <div class="metrics">
+        <div><span id="m-tick">—</span><small>tick</small></div>
+        <div><span id="m-agents">—</span><small>active agents</small></div>
+        <div><span id="m-latency">—</span><small>avg latency</small></div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2>Interactive Agent Visualizations</h2>
+      <p>Explore double‑helix topologies, message buses and load‑balanced clusters with smooth GSAP scrollytelling.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>WebGL/Three.js</h3>
+          <p>Real‑time 3D networks rendering 88+ agents as nodes and channels.</p>
+        </div>
+        <div class="card">
+          <h3>Parallax Layers</h3>
+          <p>Multi‑layer depth revealing perception → planning → actuation.</p>
+        </div>
+        <div class="card">
+          <h3>Live Metrics</h3>
+          <p>Connect to your Hive daemon via WebSocket for streaming stats.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <h2>Pricing</h2>
+      <div class="tiers">
+        <div class="tier">
+          <h3>Starter</h3>
+          <p class="price">$99<span>/mo</span></p>
+          <ul>
+            <li>1 swarm (up to 88 agents)</li>
+            <li>Metrics dashboard</li>
+            <li>Email support</li>
+          </ul>
+          <button class="btn primary checkout" data-payment-link="https://buy.stripe.com/4gMeVf55l0GF7qO4Oj2Nq15">Buy with Stripe</button>
+          <div class="paypal" data-plan="starter"></div>
+        </div>
+        <div class="tier popular">
+          <div class="badge">Popular</div>
+          <h3>Professional</h3>
+          <p class="price">$299<span>/mo</span></p>
+          <ul>
+            <li>3 swarms (up to 500 agents)</li>
+            <li>Priority support</li>
+            <li>Custom integrations</li>
+          </ul>
+          <button class="btn primary checkout" data-payment-link="https://buy.stripe.com/4gMeVf55l0GF7qO4Oj2Nq15">Buy with Stripe</button>
+          <div class="paypal" data-plan="pro"></div>
+        </div>
+        <div class="tier">
+          <h3>Business</h3>
+          <p class="price">$799<span>/mo</span></p>
+          <ul>
+            <li>Unlimited swarms</li>
+            <li>Dedicated cluster</li>
+            <li>24/7 support</li>
+          </ul>
+          <button class="btn primary checkout" data-payment-link="https://buy.stripe.com/4gMeVf55l0GF7qO4Oj2Nq15">Buy with Stripe</button>
+          <div class="paypal" data-plan="biz"></div>
+        </div>
+      </div>
+      <p class="note">Replace Payment Links and PayPal Client ID before going live.</p>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Talk to a human</h2>
+      <p>Email hello@thataiguy.com — we’ll reply within 1 business day.</p>
+    </section>
+
+    <footer class="footer">© <span id="year"></span> The Hive AGI — All rights reserved.</footer>
+  </body>
+  </html>
+
