@@ -3,99 +3,683 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Hive AGI — That AI Guy</title>
+    <title>The Hive AGI — Advanced Collective Intelligence | That AI Guy</title>
+    <meta name="description" content="The Hive AGI: Bio-inspired artificial general intelligence powered by mathematical foundations from DNA, RNA, neural networks, and quantum mechanics.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <!-- MathJax for beautiful equation rendering -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true
+        },
+        svg: { fontCache: 'global' },
+        startup: { pageReady: () => MathJax.startup.defaultPageReady() }
+      };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script defer src="https://unpkg.com/three@0.161.0/build/three.min.js"></script>
     <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
     <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script defer src="js/metrics.js"></script>
     <script defer src="js/visuals.js"></script>
+    <script defer src="js/equations.js"></script>
     <script defer src="js/main.js"></script>
     <!-- PayPal (replace YOUR_CLIENT_ID) -->
     <script async src="https://www.paypal.com/sdk/js?client-id=sandbox-client-id&currency=USD"></script>
   </head>
   <body>
+    <!-- Particle background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Floating orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
     <header class="nav">
-      <div class="brand">The Hive AGI</div>
+      <div class="brand">
+        <span class="brand-icon">&#x2B22;</span>
+        The Hive AGI
+      </div>
       <nav>
         <a href="#features">Features</a>
+        <a href="#science">Science</a>
+        <a href="#mathematics">Mathematics</a>
         <a href="#pricing">Pricing</a>
         <a href="#contact">Contact</a>
       </nav>
+      <div class="nav-glow"></div>
     </header>
 
     <section class="hero">
       <canvas id="scene"></canvas>
+      <div class="hero-gradient"></div>
       <div class="hero-copy">
-        <h1>Collective Intelligence, Real‑Time.</h1>
-        <p>Composable swarms of ultra‑small agents orchestrated by The Hive.</p>
+        <div class="hero-badge">Bio-Inspired AGI</div>
+        <h1>Collective Intelligence,<br><span class="gradient-text">Mathematically Evolved.</span></h1>
+        <p class="hero-subtitle">Composable swarms of ultra-small agents orchestrated through the mathematical principles of DNA replication, neural plasticity, and quantum coherence.</p>
         <div class="cta-row">
-          <a class="btn primary" href="#pricing">Get Started</a>
-          <a class="btn" href="#demo">See Demo</a>
+          <a class="btn primary pulse-glow" href="#pricing">
+            <span>Get Started</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn secondary" href="#science">
+            <span>Explore Science</span>
+          </a>
         </div>
       </div>
       <div class="metrics">
-        <div><span id="m-tick">—</span><small>tick</small></div>
-        <div><span id="m-agents">—</span><small>active agents</small></div>
-        <div><span id="m-latency">—</span><small>avg latency</small></div>
+        <div class="metric-card">
+          <span id="m-tick">—</span>
+          <small>tick</small>
+          <div class="metric-bar"></div>
+        </div>
+        <div class="metric-card">
+          <span id="m-agents">—</span>
+          <small>active agents</small>
+          <div class="metric-bar"></div>
+        </div>
+        <div class="metric-card">
+          <span id="m-latency">—</span>
+          <small>avg latency</small>
+          <div class="metric-bar"></div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow"></div>
       </div>
     </section>
 
     <section id="features" class="features">
-      <h2>Interactive Agent Visualizations</h2>
-      <p>Explore double‑helix topologies, message buses and load‑balanced clusters with smooth GSAP scrollytelling.</p>
+      <div class="section-header">
+        <span class="section-tag">Core Capabilities</span>
+        <h2>Interactive Agent <span class="gradient-text">Visualizations</span></h2>
+        <p class="section-subtitle">Explore double-helix topologies, message buses and load-balanced clusters with smooth GSAP scrollytelling.</p>
+      </div>
       <div class="cards">
-        <div class="card">
+        <div class="card card-hover">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
           <h3>WebGL/Three.js</h3>
-          <p>Real‑time 3D networks rendering 88+ agents as nodes and channels.</p>
+          <p>Real-time 3D networks rendering 88+ agents as nodes and channels with parametric helix equations.</p>
+          <div class="card-equation">$r(t) = R\cos(\omega t)\hat{i} + h \cdot t\hat{j} + R\sin(\omega t)\hat{k}$</div>
         </div>
-        <div class="card">
+        <div class="card card-hover">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          </div>
           <h3>Parallax Layers</h3>
-          <p>Multi‑layer depth revealing perception → planning → actuation.</p>
+          <p>Multi-layer depth revealing perception → planning → actuation through gradient descent optimization.</p>
+          <div class="card-equation">$\theta_{t+1} = \theta_t - \eta \nabla_\theta J(\theta)$</div>
         </div>
-        <div class="card">
+        <div class="card card-hover">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
           <h3>Live Metrics</h3>
-          <p>Connect to your Hive daemon via WebSocket for streaming stats.</p>
+          <p>Connect to your Hive daemon via WebSocket for streaming stats with Shannon entropy monitoring.</p>
+          <div class="card-equation">$H(X) = -\sum_{i=1}^{n} p(x_i) \log_2 p(x_i)$</div>
         </div>
       </div>
     </section>
 
+    <!-- SCIENCE SECTION: DNA, RNA, CHROMOSOMES -->
+    <section id="science" class="science-section">
+      <div class="section-header">
+        <span class="section-tag">Biological Foundations</span>
+        <h2>The <span class="gradient-text">Science</span> Behind The Hive</h2>
+        <p class="section-subtitle">Our AGI architecture draws from the most elegant information processing systems in nature.</p>
+      </div>
+
+      <!-- DNA SUBSECTION -->
+      <div class="science-block" id="dna">
+        <div class="science-visual">
+          <canvas id="dna-canvas"></canvas>
+        </div>
+        <div class="science-content">
+          <div class="science-badge">Molecular Biology</div>
+          <h3>DNA Replication <span class="highlight">&</span> Information Storage</h3>
+          <p>DNA encodes information through base pairing: Adenine-Thymine (A-T) and Guanine-Cytosine (G-C). The Hive uses analogous encoding for agent memory.</p>
+
+          <div class="equation-grid">
+            <div class="equation-card">
+              <div class="equation-label">Base Pairing Energy</div>
+              <div class="equation">$$\Delta G_{bp} = \Delta H - T\Delta S$$</div>
+              <div class="equation-desc">Gibbs free energy of base pair formation</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Replication Rate</div>
+              <div class="equation">$$\frac{d[DNA]}{dt} = k_{pol}[DNA_{template}][dNTP]$$</div>
+              <div class="equation-desc">Michaelis-Menten kinetics of DNA polymerase</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Helix Geometry</div>
+              <div class="equation">$$\begin{cases} x = R\cos\left(\frac{2\pi n}{10.5}\right) \\ y = R\sin\left(\frac{2\pi n}{10.5}\right) \\ z = 0.34n \end{cases}$$</div>
+              <div class="equation-desc">B-DNA helix: 10.5 bp/turn, 0.34nm rise</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Mutation Rate</div>
+              <div class="equation">$$\mu = \frac{1}{N}\sum_{i=1}^{N}(1-\delta_{s_i,s'_i})$$</div>
+              <div class="equation-desc">Per-site mutation probability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RNA SUBSECTION -->
+      <div class="science-block reverse" id="rna">
+        <div class="science-visual">
+          <canvas id="rna-canvas"></canvas>
+        </div>
+        <div class="science-content">
+          <div class="science-badge">Transcription</div>
+          <h3>RNA Transcription <span class="highlight">&</span> Translation</h3>
+          <p>RNA serves as the messenger between DNA storage and protein action. Similarly, our agents translate encoded instructions into executable behaviors.</p>
+
+          <div class="equation-grid">
+            <div class="equation-card">
+              <div class="equation-label">Transcription Kinetics</div>
+              <div class="equation">$$\frac{d[mRNA]}{dt} = k_{tx}[Gene] - \gamma_{m}[mRNA]$$</div>
+              <div class="equation-desc">mRNA synthesis and degradation</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Translation Rate</div>
+              <div class="equation">$$\frac{d[Protein]}{dt} = k_{tl}[mRNA] - \gamma_p[Protein]$$</div>
+              <div class="equation-desc">Protein production from mRNA template</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Codon Usage Bias</div>
+              <div class="equation">$$CAI = \left(\prod_{i=1}^{L}w_i\right)^{1/L}$$</div>
+              <div class="equation-desc">Codon Adaptation Index for expression</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">RNA Secondary Structure</div>
+              <div class="equation">$$E_{fold} = \sum_{i<j}e_{ij}s_is_j + \sum_i e_i^{loop}$$</div>
+              <div class="equation-desc">Minimum free energy folding</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHROMOSOMES SUBSECTION -->
+      <div class="science-block" id="chromosomes">
+        <div class="science-visual">
+          <canvas id="chromo-canvas"></canvas>
+        </div>
+        <div class="science-content">
+          <div class="science-badge">Genetics</div>
+          <h3>Chromosomal <span class="highlight">Dynamics</span></h3>
+          <p>Chromosomal recombination and segregation ensure genetic diversity and faithful inheritance. Our swarm architecture mirrors these principles for agent evolution.</p>
+
+          <div class="equation-grid">
+            <div class="equation-card">
+              <div class="equation-label">Recombination Frequency</div>
+              <div class="equation">$$r = \frac{N_{recombinant}}{N_{total}} = \frac{1}{2}(1-e^{-2m})$$</div>
+              <div class="equation-desc">Haldane's mapping function</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Hardy-Weinberg Equilibrium</div>
+              <div class="equation">$$p^2 + 2pq + q^2 = 1$$</div>
+              <div class="equation-desc">Genotype frequencies in ideal population</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Genetic Drift</div>
+              <div class="equation">$$\sigma^2_{\Delta p} = \frac{p(1-p)}{2N_e}$$</div>
+              <div class="equation-desc">Variance in allele frequency per generation</div>
+            </div>
+            <div class="equation-card">
+              <div class="equation-label">Selection Coefficient</div>
+              <div class="equation">$$\Delta p = \frac{sp(1-p)[p(h-1)+1]}{1-2pqs-s p^2}$$</div>
+              <div class="equation-desc">Change in allele frequency under selection</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEUROLOGY SECTION -->
+    <section id="neurology" class="neurology-section">
+      <div class="section-header">
+        <span class="section-tag">Neural Architecture</span>
+        <h2>Neurological <span class="gradient-text">Foundations</span></h2>
+        <p class="section-subtitle">The Hive's cognitive architecture is built on principles from computational neuroscience.</p>
+      </div>
+
+      <div class="neuro-grid">
+        <div class="neuro-card large">
+          <div class="neuro-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/><path d="M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+          </div>
+          <h4>Hodgkin-Huxley Model</h4>
+          <p>The foundational equation for action potential generation in neurons.</p>
+          <div class="equation large">
+            $$C_m\frac{dV}{dt} = I_{ext} - \bar{g}_{Na}m^3h(V-E_{Na}) - \bar{g}_K n^4(V-E_K) - \bar{g}_L(V-E_L)$$
+          </div>
+          <div class="equation-vars">
+            <span>$C_m$: membrane capacitance</span>
+            <span>$m,h,n$: gating variables</span>
+            <span>$\bar{g}$: conductances</span>
+          </div>
+        </div>
+
+        <div class="neuro-card">
+          <h4>Synaptic Transmission</h4>
+          <div class="equation">$$I_{syn} = g_{syn}s(V-E_{syn})$$</div>
+          <div class="equation secondary">$$\frac{ds}{dt} = \alpha[T](1-s) - \beta s$$</div>
+          <p>Neurotransmitter-gated synaptic current</p>
+        </div>
+
+        <div class="neuro-card">
+          <h4>Spike-Timing Dependent Plasticity</h4>
+          <div class="equation">$$\Delta w = \begin{cases} A_+e^{-\Delta t/\tau_+} & \Delta t > 0 \\ -A_-e^{\Delta t/\tau_-} & \Delta t < 0 \end{cases}$$</div>
+          <p>Learning rule based on spike timing</p>
+        </div>
+
+        <div class="neuro-card">
+          <h4>Neural Field Equation</h4>
+          <div class="equation">$$\tau\frac{\partial u}{\partial t} = -u + \int w(x-x')f(u(x'))dx' + I_{ext}$$</div>
+          <p>Continuum dynamics of neural populations</p>
+        </div>
+
+        <div class="neuro-card">
+          <h4>Integrate-and-Fire</h4>
+          <div class="equation">$$\tau_m\frac{dV}{dt} = -(V-V_L) + R_m I(t)$$</div>
+          <p>Simplified spiking neuron model</p>
+        </div>
+
+        <div class="neuro-card">
+          <h4>Hebbian Learning</h4>
+          <div class="equation">$$\frac{dw_{ij}}{dt} = \eta x_i x_j - \lambda w_{ij}$$</div>
+          <p>"Neurons that fire together, wire together"</p>
+        </div>
+
+        <div class="neuro-card">
+          <h4>FitzHugh-Nagumo</h4>
+          <div class="equation">$$\begin{align}\frac{dv}{dt} &= v - \frac{v^3}{3} - w + I \\ \frac{dw}{dt} &= \epsilon(v + a - bw)\end{align}$$</div>
+          <p>Reduced excitable system dynamics</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATHEMATICS SECTION -->
+    <section id="mathematics" class="math-section">
+      <div class="section-header">
+        <span class="section-tag">Theoretical Foundations</span>
+        <h2>Advanced <span class="gradient-text">Mathematics</span></h2>
+        <p class="section-subtitle">The rigorous mathematical framework underlying collective intelligence.</p>
+      </div>
+
+      <!-- Information Theory -->
+      <div class="math-category">
+        <div class="category-header">
+          <h3>Information Theory</h3>
+          <p>Quantifying information flow between agents</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item">
+            <div class="showcase-title">Shannon Entropy</div>
+            <div class="equation">$$H(X) = -\sum_{x \in \mathcal{X}} p(x) \log_2 p(x)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Mutual Information</div>
+            <div class="equation">$$I(X;Y) = \sum_{x,y} p(x,y) \log\frac{p(x,y)}{p(x)p(y)}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Kullback-Leibler Divergence</div>
+            <div class="equation">$$D_{KL}(P||Q) = \sum_x P(x) \log\frac{P(x)}{Q(x)}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Channel Capacity</div>
+            <div class="equation">$$C = \max_{p(x)} I(X;Y) = W\log_2\left(1 + \frac{S}{N}\right)$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantum Mechanics -->
+      <div class="math-category quantum">
+        <div class="category-header">
+          <h3>Quantum Computing Foundations</h3>
+          <p>Leveraging quantum effects for parallel processing</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item featured">
+            <div class="showcase-title">Schrödinger Equation</div>
+            <div class="equation">$$i\hbar\frac{\partial}{\partial t}|\Psi\rangle = \hat{H}|\Psi\rangle$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Quantum Superposition</div>
+            <div class="equation">$$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle, \quad |\alpha|^2 + |\beta|^2 = 1$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Quantum Entanglement</div>
+            <div class="equation">$$|\Phi^+\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Density Matrix</div>
+            <div class="equation">$$\rho = \sum_i p_i |\psi_i\rangle\langle\psi_i|$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Von Neumann Entropy</div>
+            <div class="equation">$$S(\rho) = -\text{Tr}(\rho \log \rho)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Quantum Gate (Hadamard)</div>
+            <div class="equation">$$H = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graph Theory & Networks -->
+      <div class="math-category">
+        <div class="category-header">
+          <h3>Graph Theory & Network Dynamics</h3>
+          <p>Modeling swarm connectivity and communication</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item">
+            <div class="showcase-title">Laplacian Matrix</div>
+            <div class="equation">$$L = D - A, \quad L_{ij} = \begin{cases} deg(v_i) & i=j \\ -1 & (i,j) \in E \\ 0 & \text{otherwise}\end{cases}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">PageRank Algorithm</div>
+            <div class="equation">$$\pi_i = \frac{1-d}{N} + d\sum_{j \in B_i}\frac{\pi_j}{L_j}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Clustering Coefficient</div>
+            <div class="equation">$$C_i = \frac{2|\{e_{jk}: v_j,v_k \in N_i, e_{jk} \in E\}|}{k_i(k_i-1)}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Network Flow Conservation</div>
+            <div class="equation">$$\sum_{j:(i,j)\in E} f_{ij} - \sum_{j:(j,i)\in E} f_{ji} = b_i$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Differential Equations -->
+      <div class="math-category">
+        <div class="category-header">
+          <h3>Dynamical Systems & Differential Equations</h3>
+          <p>Continuous-time agent state evolution</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item featured">
+            <div class="showcase-title">Lotka-Volterra (Predator-Prey)</div>
+            <div class="equation">$$\frac{dx}{dt} = \alpha x - \beta xy, \quad \frac{dy}{dt} = \delta xy - \gamma y$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Lorenz Attractor (Chaos)</div>
+            <div class="equation">$$\dot{x} = \sigma(y-x), \quad \dot{y} = x(\rho-z)-y, \quad \dot{z} = xy - \beta z$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Navier-Stokes (Fluid Flow)</div>
+            <div class="equation">$$\rho\left(\frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla\mathbf{v}\right) = -\nabla p + \mu\nabla^2\mathbf{v} + \mathbf{f}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Heat Equation (Diffusion)</div>
+            <div class="equation">$$\frac{\partial u}{\partial t} = \alpha \nabla^2 u$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Optimization & Machine Learning -->
+      <div class="math-category ml">
+        <div class="category-header">
+          <h3>Optimization & Machine Learning</h3>
+          <p>Training collective intelligence systems</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item">
+            <div class="showcase-title">Gradient Descent</div>
+            <div class="equation">$$\theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L}(\theta_t)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Adam Optimizer</div>
+            <div class="equation">$$\theta_t = \theta_{t-1} - \frac{\eta}{\sqrt{\hat{v}_t}+\epsilon}\hat{m}_t$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Cross-Entropy Loss</div>
+            <div class="equation">$$\mathcal{L} = -\sum_{i=1}^{C} y_i \log(\hat{y}_i)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Backpropagation</div>
+            <div class="equation">$$\frac{\partial \mathcal{L}}{\partial w^{(l)}} = \frac{\partial \mathcal{L}}{\partial a^{(l)}} \cdot \frac{\partial a^{(l)}}{\partial z^{(l)}} \cdot \frac{\partial z^{(l)}}{\partial w^{(l)}}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Attention Mechanism</div>
+            <div class="equation">$$\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Variational Autoencoder</div>
+            <div class="equation">$$\mathcal{L}_{VAE} = \mathbb{E}_{q}[\log p(x|z)] - D_{KL}(q(z|x)||p(z))$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swarm Intelligence -->
+      <div class="math-category swarm">
+        <div class="category-header">
+          <h3>Swarm Intelligence Algorithms</h3>
+          <p>Emergent collective behavior equations</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item featured">
+            <div class="showcase-title">Boids Flocking Model</div>
+            <div class="equation">$$\mathbf{v}_i^{new} = w_1\mathbf{v}_{separation} + w_2\mathbf{v}_{alignment} + w_3\mathbf{v}_{cohesion}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Particle Swarm Optimization</div>
+            <div class="equation">$$v_i^{t+1} = \omega v_i^t + c_1r_1(p_i - x_i^t) + c_2r_2(g - x_i^t)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Ant Colony Optimization</div>
+            <div class="equation">$$p_{ij}^k = \frac{[\tau_{ij}]^\alpha[\eta_{ij}]^\beta}{\sum_{l \in N_i^k}[\tau_{il}]^\alpha[\eta_{il}]^\beta}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Pheromone Update</div>
+            <div class="equation">$$\tau_{ij}(t+1) = (1-\rho)\tau_{ij}(t) + \sum_{k=1}^{m}\Delta\tau_{ij}^k$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topology & Geometry -->
+      <div class="math-category">
+        <div class="category-header">
+          <h3>Topology & Differential Geometry</h3>
+          <p>The shape of agent configuration spaces</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item">
+            <div class="showcase-title">Euler Characteristic</div>
+            <div class="equation">$$\chi = V - E + F$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Gauss-Bonnet Theorem</div>
+            <div class="equation">$$\int_M K\, dA + \int_{\partial M} k_g\, ds = 2\pi\chi(M)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Fundamental Group</div>
+            <div class="equation">$$\pi_1(X, x_0) = \{[\gamma] : \gamma(0) = \gamma(1) = x_0\}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Metric Tensor</div>
+            <div class="equation">$$ds^2 = g_{\mu\nu}dx^\mu dx^\nu$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Probability & Statistics -->
+      <div class="math-category prob">
+        <div class="category-header">
+          <h3>Probability & Stochastic Processes</h3>
+          <p>Uncertainty quantification in agent decisions</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item">
+            <div class="showcase-title">Bayes' Theorem</div>
+            <div class="equation">$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Markov Chain Transition</div>
+            <div class="equation">$$P(X_{n+1}=j|X_n=i) = P_{ij}, \quad \pi P = \pi$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Gaussian Distribution</div>
+            <div class="equation">$$p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Central Limit Theorem</div>
+            <div class="equation">$$\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \mathcal{N}(0,1)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Wiener Process (Brownian Motion)</div>
+            <div class="equation">$$dW_t \sim \mathcal{N}(0, dt), \quad \mathbb{E}[W_t W_s] = \min(t,s)$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Fokker-Planck Equation</div>
+            <div class="equation">$$\frac{\partial p}{\partial t} = -\frac{\partial}{\partial x}[\mu(x)p] + \frac{1}{2}\frac{\partial^2}{\partial x^2}[\sigma^2(x)p]$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Theory -->
+      <div class="math-category control">
+        <div class="category-header">
+          <h3>Control Theory</h3>
+          <p>Feedback mechanisms for agent coordination</p>
+        </div>
+        <div class="equation-showcase">
+          <div class="showcase-item">
+            <div class="showcase-title">State Space Model</div>
+            <div class="equation">$$\dot{\mathbf{x}} = A\mathbf{x} + B\mathbf{u}, \quad \mathbf{y} = C\mathbf{x} + D\mathbf{u}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">PID Controller</div>
+            <div class="equation">$$u(t) = K_p e(t) + K_i\int_0^t e(\tau)d\tau + K_d\frac{de}{dt}$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Lyapunov Stability</div>
+            <div class="equation">$$V(x) > 0, \quad \dot{V}(x) = \nabla V \cdot f(x) \leq 0$$</div>
+          </div>
+          <div class="showcase-item">
+            <div class="showcase-title">Kalman Filter</div>
+            <div class="equation">$$\hat{x}_{k|k} = \hat{x}_{k|k-1} + K_k(z_k - H\hat{x}_{k|k-1})$$</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIFIED FIELD THEORY SECTION -->
+    <section id="unified" class="unified-section">
+      <div class="unified-bg"></div>
+      <div class="section-header">
+        <span class="section-tag">The Grand Synthesis</span>
+        <h2>Unified <span class="gradient-text">Intelligence Framework</span></h2>
+        <p class="section-subtitle">The Hive AGI integrates all mathematical domains into a coherent whole.</p>
+      </div>
+
+      <div class="unified-equation">
+        <div class="unified-title">The Hive Master Equation</div>
+        <div class="equation massive">
+          $$\mathcal{H}_{AGI} = \underbrace{\int \psi^\dagger(x)\hat{H}_0\psi(x)dx}_{\text{Quantum Core}} + \underbrace{\sum_{i,j}J_{ij}S_i \cdot S_j}_{\text{Agent Coupling}} + \underbrace{D_{KL}(q||p)}_{\text{Information}} - \underbrace{\beta F}_{\text{Free Energy}}$$
+        </div>
+        <div class="unified-desc">
+          <p>Where the collective intelligence emerges from:</p>
+          <ul>
+            <li><strong>Quantum Core:</strong> Superposition of agent states enabling parallel exploration</li>
+            <li><strong>Agent Coupling:</strong> Ising-model interactions encoding cooperation/competition</li>
+            <li><strong>Information Term:</strong> KL divergence driving belief alignment</li>
+            <li><strong>Free Energy:</strong> Thermodynamic principle minimizing surprise</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="synthesis-grid">
+        <div class="synthesis-card">
+          <div class="synth-number">01</div>
+          <h4>DNA → Agent Memory</h4>
+          <p>Base pairing → Key-value storage</p>
+          <div class="equation small">$A-T \equiv K \leftrightarrow V$</div>
+        </div>
+        <div class="synthesis-card">
+          <div class="synth-number">02</div>
+          <h4>RNA → Message Passing</h4>
+          <p>Transcription → Agent communication</p>
+          <div class="equation small">$mRNA \equiv msg_{i \to j}$</div>
+        </div>
+        <div class="synthesis-card">
+          <div class="synth-number">03</div>
+          <h4>Neurons → Agents</h4>
+          <p>Spike trains → Event streams</p>
+          <div class="equation small">$\sum\delta(t-t_i) \equiv events$</div>
+        </div>
+        <div class="synthesis-card">
+          <div class="synth-number">04</div>
+          <h4>Chromosomes → Swarms</h4>
+          <p>Genetic recombination → Swarm evolution</p>
+          <div class="equation small">$crossover \equiv merge$</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING SECTION -->
     <section id="pricing" class="pricing">
-      <h2>Pricing</h2>
+      <div class="section-header">
+        <span class="section-tag">Start Building</span>
+        <h2>Choose Your <span class="gradient-text">Plan</span></h2>
+        <p class="section-subtitle">Scale your collective intelligence from prototype to production.</p>
+      </div>
       <div class="tiers">
         <div class="tier">
-          <h3>Starter</h3>
+          <div class="tier-header">
+            <h3>Starter</h3>
+            <p class="tier-desc">For individual researchers and small projects</p>
+          </div>
           <p class="price">$99<span>/mo</span></p>
           <ul>
-            <li>1 swarm (up to 88 agents)</li>
-            <li>Metrics dashboard</li>
-            <li>Email support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>1 swarm (up to 88 agents)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Metrics dashboard</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Email support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Basic equations API</li>
           </ul>
           <button class="btn primary checkout" data-payment-link="https://buy.stripe.com/4gMeVf55l0GF7qO4Oj2Nq15">Buy with Stripe</button>
           <div class="paypal" data-plan="starter"></div>
         </div>
         <div class="tier popular">
-          <div class="badge">Popular</div>
-          <h3>Professional</h3>
+          <div class="badge">Most Popular</div>
+          <div class="tier-header">
+            <h3>Professional</h3>
+            <p class="tier-desc">For teams building production systems</p>
+          </div>
           <p class="price">$299<span>/mo</span></p>
           <ul>
-            <li>3 swarms (up to 500 agents)</li>
-            <li>Priority support</li>
-            <li>Custom integrations</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>3 swarms (up to 500 agents)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Priority support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Custom integrations</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Full mathematics API</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Neural simulation tools</li>
           </ul>
           <button class="btn primary checkout" data-payment-link="https://buy.stripe.com/4gMeVf55l0GF7qO4Oj2Nq15">Buy with Stripe</button>
           <div class="paypal" data-plan="pro"></div>
         </div>
         <div class="tier">
-          <h3>Business</h3>
+          <div class="tier-header">
+            <h3>Business</h3>
+            <p class="tier-desc">For enterprise-scale deployments</p>
+          </div>
           <p class="price">$799<span>/mo</span></p>
           <ul>
-            <li>Unlimited swarms</li>
-            <li>Dedicated cluster</li>
-            <li>24/7 support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Unlimited swarms</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Dedicated cluster</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>24/7 support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Quantum simulation module</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>Custom equation development</li>
           </ul>
           <button class="btn primary checkout" data-payment-link="https://buy.stripe.com/4gMeVf55l0GF7qO4Oj2Nq15">Buy with Stripe</button>
           <div class="paypal" data-plan="biz"></div>
@@ -104,12 +688,45 @@
       <p class="note">Replace Payment Links and PayPal Client ID before going live.</p>
     </section>
 
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact">
-      <h2>Talk to a human</h2>
-      <p>Email hello@thataiguy.com — we’ll reply within 1 business day.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Let's Build the <span class="gradient-text">Future</span> Together</h2>
+          <p>Whether you're a researcher exploring collective intelligence, a developer building swarm systems, or an enterprise scaling AGI solutions — we're here to help.</p>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>hello@thataiguy.com</span>
+            </div>
+            <div class="contact-method">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>San Francisco, CA</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-visual">
+          <canvas id="contact-canvas"></canvas>
+        </div>
+      </div>
     </section>
 
-    <footer class="footer">© <span id="year"></span> The Hive AGI — All rights reserved.</footer>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-icon">&#x2B22;</span>
+          The Hive AGI
+        </div>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#science">Science</a>
+          <a href="#mathematics">Mathematics</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer-copy">
+          © <span id="year"></span> The Hive AGI — All rights reserved. Built with mathematics and love.
+        </div>
+      </div>
+    </footer>
   </body>
-  </html>
-
+</html>
