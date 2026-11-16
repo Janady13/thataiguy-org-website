@@ -29,3 +29,7 @@ Deploy to Netlify, Vercel, or any static host.
 ## License
 
 Proprietary - ThatAIGuy
+
+## About
+
+Built by [ThatDeveloperGuy](https://thatdeveloperguy.com/) (THATDEVELOPERGUY LLC), a service-disabled veteran-owned web and AI engineering company in Cassville, Missouri. Founder: [Joseph W. Anady](https://feedthejoe.com/joseph/).
